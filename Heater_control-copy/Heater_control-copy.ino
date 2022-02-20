@@ -64,12 +64,12 @@ void loop() {
     delay(1000);
 
     
-  if ((state.ambientTemp <= state.setpoint -1) && (state.state == HEATER_STATE_OFF)) {
+  if ((state.ambientTemp <= state.setpoint - 2) && (state.state == HEATER_STATE_OFF)) {
    heater.sendCommand(HEATER_CMD_POWER);
    Serial.print("Turn on!");
   } 
   
-  if ((state.ambientTemp >= state.setpoint +1) && (state.state == HEATER_STATE_RUNNING)) {
+  if ((state.ambientTemp >= state.setpoint + 1) && (state.state == HEATER_STATE_RUNNING)) {
    heater.sendCommand(HEATER_CMD_POWER);  
    Serial.print("Turn off!");
   }
