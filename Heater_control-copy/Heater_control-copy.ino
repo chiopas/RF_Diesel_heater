@@ -21,8 +21,7 @@ DieselHeaterRF heater;
 heater_state_t state;
 
 
-uint32_t heaterAddr = 1456624013; // Heater address is a 32 bit unsigned int. Use the findAddress() to get your heater's address.
-
+uint32_t heaterAddr; // Heater address is a 32 bit unsigned int. Use the findAddress() to get your heater's address.
 
 void setup() {
   
@@ -32,17 +31,17 @@ void setup() {
    
   Serial.println("Started pairing, press and hold the pairing button on the heater's LCD panel...");
   
-  //heaterAddr = heater.findAddress(60000UL);
+  heaterAddr = heater.findAddress(60000UL);
   
-  //if (heaterAddr) {
- //   Serial.print("Got address: ");
+  if (heaterAddr) {
+    Serial.print("Got address: ");
     Serial.println(heaterAddr, HEX);
     heater.setAddress(heaterAddr);
- // }
-// else {
-  //  Serial.println("Failed to find a heater");    
- //   while(1) {}
- // }
+  }
+ else {
+    Serial.println("Failed to find a heater");    
+    while(1) {}
+  }
   
 }
 void loop() {
